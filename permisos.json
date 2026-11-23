@@ -1,0 +1,46 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "logs:CreateLogGroup",
+            "Resource": "arn:aws:logs:us-east-1:891377180652:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:us-east-1:891377180652:log-group:/aws/lambda/bls-tseed-workshop-JuanGrajales:*"
+            ]
+        },
+        {
+            "Sid": "ReadSourceBucket",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::bld-tseed.workshop-input-semillero2026-q4-d",
+                "arn:aws:s3:::bld-tseed.workshop-input-semillero2026-q4-d/*"
+            ]
+        },
+        {
+            "Sid": "WriteOutputBucket",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:ListBucket",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::bld-tseed-workshop-output-semillero-2026-q4-d",
+                "arn:aws:s3:::bld-tseed-workshop-output-semillero-2026-q4-d/*"
+            ]
+        }
+    ]
+}
